@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DetailsPage = async () => {
+const DetailsPage = async ({params}) => {
  const resolvedParams = await params; 
   const id = resolvedParams.id;
   

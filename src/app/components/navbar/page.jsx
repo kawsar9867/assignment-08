@@ -6,8 +6,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   return (
-    <div className="sticky top-0 z-40  mx-auto w-full">
-      <nav className=" shadow-md  rounded-md bg-blue-300">
+    <div className="sticky top-4 z-40 w-11/12 mx-auto">
+      <nav className="px-5 shadow-md bg-blue-400 ">
         <header className="flex h-16 items-center justify-between px-6">
           <div className="flex items-center gap-4">
             <button
@@ -40,31 +40,32 @@ const Navbar = () => {
               </svg>
             </button>
 
-            <div>
-              <img src="/weblogo.png" alt="website logo" />
-            </div>
+            <div className="font-bold font-3xl">SkillSphere</div>
           </div>
 
           <div>
-            <ul className="hidden items-center gap-4 md:flex text-black">
+            <ul className="hidden items-center gap-4 md:flex">
+              <li className="text-black">
+                <Link href="/">Home</Link>
+              </li>
               <li>
-                <Link className="text-black" href="/">Home</Link>
-              </li>
-              <li className="">
-                <Link className="text-black" href="/components/api">Courses</Link>
-              </li>
-              <li className="">
-                <Link className="text-black" href="/">My Profile</Link>
+                <Link href="/components/api">All Courses</Link>
               </li>
             </ul>
           </div>
-          <div className="flex  ">
-           <button className="bg-blue-400 px-3 rounded-l-full text-white hover:bg-red-400">Login</button>
-            <button
-              className="bg-blue-400 py-1 px-3 rounded-r-full text-white hover:bg-green-500 transition-all duration-300"
+          <div className="flex gap-2 ">
+            <Button
+              variant="tertiary"
+              className="hover:text-white hover:bg-green-500 transition-all duration-300"
+            >
+              Login
+            </Button>
+            <Button
+              variant="tertiary"
+              className="hover:text-white hover:bg-green-500 transition-all duration-300"
             >
               register{" "}
-            </button>
+            </Button>
           </div>
         </header>
 
@@ -75,10 +76,7 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/components/api">Courses</Link>
-              </li>
-              <li>
-                <Link href="/">My Profile</Link>
+                <Link href="/animals">All Animals</Link>
               </li>
             </ul>
           </div>
