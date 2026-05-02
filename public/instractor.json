@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Kawsar Ahamed",
+    "role": "Development Lead",
+    "rating": 5.0,
+    "specialty": "React Guide",
+    "image": "https://i.ibb.co.com/qMpNMmmz/IMG-20260211-231125.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Lisa Ray",
+    "role": "Flutter Expert",
+    "rating": 4.9,
+    "specialty": "Flutter App Dev",
+    "image": "https://i.pravatar.cc/150?u=michael"
+  },
+  {
+    "id": 3,
+    "name": "Andrew Ng",
+    "role": "ML Legend",
+    "rating": 5.0,
+    "specialty": "ML A-Z",
+    "image": "https://i.pravatar.cc/150?u=alex"
+  },
+  {
+    "id": 4,
+    "name": "Sarah Chen",
+    "role": "UX Maven",
+    "rating": 4.8,
+    "specialty": "Interaction Design",
+    "image": "https://i.pravatar.cc/150?u=jason"
+  }
+]

@@ -1,9 +1,8 @@
 import React from 'react';
-import Link from 'next/link'; // ১. Link ইমপোর্ট করতে হবে
+import Link from 'next/link'; 
 
 const CoursePage = async () => {
  const res = await fetch ("http://localhost:3000/api.json")
-
   const users = await res.json();
 
   return (
@@ -18,7 +17,6 @@ const CoursePage = async () => {
             key={data.id} 
             className="group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
           >
-            {/* Course Image & Badge */}
             <div className="relative overflow-hidden">
               <img 
                 src={data.course_img} 

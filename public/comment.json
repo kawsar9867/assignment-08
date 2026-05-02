@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Aisha Khan",
+    "role": "Web Developer",
+    "rating": 5,
+    "comment": "I learned about SkillSphere's web development and responsive design, which helped me build a great career in the industry.",
+    "image": "https://i.pravatar.cc/150?u=aisha"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Chen",
+    "role": "UX Designer",
+    "rating": 5,
+    "comment": "It helped me improve my skills and promoted a project-based learning environment within the community.",
+    "image": "https://i.pravatar.cc/150?u=sarahchen"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Jones",
+    "role": "Frontend Developer",
+    "rating": 5,
+    "comment": "Being a student with SkillSphere has been amazing; from development to full support for the courses, everything is top-notch.",
+    "image": "https://i.pravatar.cc/150?u=sarahjones"
+  },
+  {
+      "id": 4,
+      "name": "Alex Khan",
+      "role": "Web Developer",
+      "rating": 5,
+      "comment": "This modern UI/UX focus is what every developer needs today. The SkillSphere course was a great choice for my MERN stack development career!",
+      "image": "https://i.pravatar.cc/150?u=kawsar"
+    }
+]
