@@ -17,7 +17,7 @@ export default function Home() {
       <PriceingPage></PriceingPage>
       <LearningPage></LearningPage>
       <InstractorPage></InstractorPage>
-    
+      <CommentPage></CommentPage>
     </div>
   );
 }
