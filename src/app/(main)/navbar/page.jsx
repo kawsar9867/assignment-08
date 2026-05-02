@@ -59,11 +59,11 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex  ">
-           <button className="bg-blue-400 px-3 rounded-l-full text-white hover:bg-red-400">Login</button>
+           <button className="bg-blue-400 px-3 rounded-l-full text-white hover:bg-red-400"><Link className="no-underline text-white" href="/components/login">Login</Link></button>
             <button
               className="bg-blue-400 py-1 px-3 rounded-r-full text-white hover:bg-green-500 transition-all duration-300"
             >
-              register{" "}
+             <Link className="no-underline text-white" href="/components/register">Register</Link>
             </button>
           </div>
         </header>

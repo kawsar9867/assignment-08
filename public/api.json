@@ -32,7 +32,7 @@
     "instructor_img": "https://i.pravatar.cc/150?u=michael",
     "course_img": "https://picsum.photos/seed/design/400/250",
     "duration": "12 hours",
-    "rating": 4.9,
+    "rating": 4.6,
     "level": "Beginner",
     "description": "Learn the core principles of visual design and typography.",
     "category": "Design",
@@ -49,7 +49,9 @@
     "level": "Advanced",
     "description": "Build scalable applications with Server Components and App Router.",
     "category": "Development",
-    "price": 99.99
+    "price": 99.99,
+    "popular":"popular"
+
   },
   {
     "id": 5,
@@ -114,7 +116,8 @@
     "level": "Intermediate",
     "description": "Build cross-platform mobile apps for Android and iOS.",
     "category": "Development",
-    "price": 42.99
+    "price": 42.99,
+    "popular":"popular"
   },
   {
     "id": 10,
@@ -136,11 +139,12 @@
     "instructor_img": "https://i.pravatar.cc/150?u=andrew",
     "course_img": "https://picsum.photos/seed/ml/400/250",
     "duration": "40 hours",
-    "rating": 4.9,
+    "rating": 5.0,
     "level": "Advanced",
     "description": "Comprehensive guide to algorithms and neural networks.",
     "category": "Data Science",
-    "price": 69.99
+    "price": 69.99,
+    "popular":"popular"
   },
   {
     "id": 12,
@@ -149,10 +153,11 @@
     "instructor_img": "https://i.pravatar.cc/150?u=robert",
     "course_img": "https://picsum.photos/seed/pmp/400/250",
     "duration": "14 hours",
-    "rating": 4.7,
+    "rating": 5.0,
     "level": "Intermediate",
     "description": "Learn to lead teams and manage complex business projects.",
     "category": "Business",
-    "price": 37.99
+    "price": 37.99,
+    "popular":"popular"
   }
 ]
