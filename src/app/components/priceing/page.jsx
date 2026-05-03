@@ -3,7 +3,7 @@ import React from "react";
 const PriceingPage = () => {
   return (
     <div>
-      <h1 className="text-4xl text-center mb-5 font-semibold  ">
+      <h1 className="text-4xl text-center mb-7 font-semibold mt-15 ">
         SkillSphere Membership
       </h1>
       <div className="flex justify-center mb-10 ">

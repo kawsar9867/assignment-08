@@ -22,7 +22,6 @@ const InstractorPage = async() => {
                 <img
                   src={person.image}
                   alt={person.name}
-                  fill
                   className="rounded-full object-cover bg-slate-200"
                 />
               </div>

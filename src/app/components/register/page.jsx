@@ -1,108 +1,119 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "@heroui/react";
 
 const RegisterPage = () => {
+  const router = useRouter();
+
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  //   image: "",
+  // });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const image = e.target.image.value;
+    const password = e.target.password.value;
+
+    console.log({ name, email, image, password });
+
+    const { data, error } = await authClient.signUp.email(
+      {
+        name,
+        email,
+        image,
+        password,
+      },
+      {
+        onSuccess: (res) => {
+          //redirect to the dashboard or sign in page
+          toast.success("Registration Successful!");
+          router.push("/login");
+        },
+        onError: (res) => {
+          // display the error message
+          alert(res.error.message);
+        },
+      },
+    );
+
+    console.log({ data, error });
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
-      {/* Registration Card: Fixed width and height */}
-      <div className="w-full max-w-[600px] min-h-[600px] bg-white shadow-2xl rounded-3xl border border-gray-100 p-10 flex flex-col justify-center">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-900">
-            Create Account
-          </h2>
-          <p className="text-gray-500 mt-2 text-sm">
-            Join us today! It only takes a minute.
-          </p>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
+          <p className="text-gray-500 text-sm">Join SkillSphere 🚀</p>
         </div>
 
-        <form className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Full Name
-            </label>
-            <input
-              type="text"
-              placeholder="Kawsar Ahamed"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-50 focus:bg-white transition-all"
-              required
-            />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            required
+          />
+
+          <input
+            type="text"
+            name="image"
+            placeholder="Profile Image URL"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            required
+          />
+
+          <div className="flex items-center gap-2 text-sm">
+            <input type="checkbox" required />
+            <span>Agree to Terms</span>
           </div>
 
-          {/* Email/Number */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Email or Phone
-            </label>
-            <input
-              type="text"
-              placeholder="example@mail.com"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-50 focus:bg-white transition-all"
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-50 focus:bg-white transition-all"
-              required
-            />
-          </div>
-
-          {/* Confirm Password */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-50 focus:bg-white transition-all"
-              required
-            />
-          </div>
-
-          {/* Terms Checkbox */}
-          <div className="flex items-center gap-2 pt-2">
-            <input
-              type="checkbox"
-              id="terms"
-              className="w-4 h-4 accent-blue-600 cursor-pointer"
-              required
-            />
-            <label
-              htmlFor="terms"
-              className="text-xs text-gray-600 cursor-pointer"
-            >
-              I agree to the{" "}
-              <span className="text-blue-600 hover:underline">
-                Terms & Conditions
-              </span>
-            </label>
-          </div>
-
-          {/* Register Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 shadow-md hover:shadow-lg active:scale-[0.97] transition-all mt-4"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
-            Register Now
+            {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
-        {/* Login Link */}
-        <p className="text-center text-gray-600 mt-8 text-sm">
+        {/* Footer */}
+        <p className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
-          <a
-            href="/components/login"
-            className="text-blue-600 font-bold hover:underline"
+          <span
+            onClick={() => router.push("/login")}
+            className="text-blue-600 cursor-pointer font-medium"
           >
             Login
-          </a>
+          </span>
         </p>
       </div>
     </div>

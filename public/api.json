@@ -50,8 +50,7 @@
     "description": "Build scalable applications with Server Components and App Router.",
     "category": "Development",
     "price": 99.99,
-    "popular":"popular"
-
+    "popular": "popular"
   },
   {
     "id": 5,
@@ -117,7 +116,7 @@
     "description": "Build cross-platform mobile apps for Android and iOS.",
     "category": "Development",
     "price": 42.99,
-    "popular":"popular"
+    "popular": "popular"
   },
   {
     "id": 10,
@@ -144,7 +143,7 @@
     "description": "Comprehensive guide to algorithms and neural networks.",
     "category": "Data Science",
     "price": 69.99,
-    "popular":"popular"
+    "popular": "popular"
   },
   {
     "id": 12,
@@ -158,6 +157,6 @@
     "description": "Learn to lead teams and manage complex business projects.",
     "category": "Business",
     "price": 37.99,
-    "popular":"popular"
+    "popular": "popular"
   }
 ]

@@ -1,4 +1,4 @@
-import { Star } from 'lucide';
+import Image from 'next/image';
 import React from 'react';
 
 const CommentPage = async() => {
@@ -21,8 +21,7 @@ const CommentPage = async() => {
                 <img
                   src={comment.image}
                   alt={comment.name}
-                  fill
-                  className="rounded-full object-cover"
+                  className="rounded-full"
                 />
               </div>
               <div>

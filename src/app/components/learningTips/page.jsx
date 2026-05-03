@@ -4,8 +4,8 @@ import React from 'react';
 
 const LearningPage = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold flex items-center gap-2 mb-8 text-slate-800 flex justify-center font-semibold">
+    <div className="max-w-7xl mx-auto px-4 py-10 mt-15">
+      <h2 className="text-4xl font-bold flex items-center gap-2 mb-8 text-slate-800 flex justify-center font-bold">
          Learning Tips & Resources
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
