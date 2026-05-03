@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 SkillSphere
 
-## Getting Started
+SkillSphere is a modern, full-stack Learning Management System (LMS) designed to provide a seamless educational experience. Built with **Next.js 16**, it leverages high-performance server-side rendering and a polished UI using **HeroUI**.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+*   **User Authentication:** Secure sign-up and login powered by **Better-Auth**, featuring email/password credentials and session management.
+*   **Dynamic Profile Management:** Users can view and update their profiles with real-time feedback using `react-hot-toast`.
+*   **Modern UI Components:** A sleek interface built with **HeroUI** (formerly NextUI) and **Tailwind CSS v4** for a truly responsive experience.
+*   **Optimized Loading States:** Custom SVG-based loading skeletons to ensure a smooth transition between routes.
+*   **Robust Backend:** Powered by **MongoDB** and **Mongoose** for scalable data storage and schema management.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | Next.js 16 (App Router) |
+| **Frontend UI** | HeroUI, Tailwind CSS v4 |
+| **State/Auth** | Better-Auth, React Hooks (`useRef`, `useState`) |
+| **Database** | MongoDB with Mongoose ODM |
+| **Icons & Alerts** | Lucide React, React Hot Toast |
+
+---
+
+## 📂 Project Structure
+
+Based on the current architecture:
+
+*   **`src/app`**: Contains the main routing logic, including specialized files like `loading.js` and `not-found.js`.
+*   **`src/lib`**: Centralized logic for database configurations (`mongoose`), authentication clients, and server-side auth logic.
+*   **`src/components`**: Reusable UI elements to maintain design consistency.
+
+---
+
+## ⚙️ Installation & Setup
+
+1.  **Clone the Repository:**
+    
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    git clone [https://github.com/your-username/skillsphere.git](https://github.com/your-username/skillsphere.git)
+    cd skillsphere
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3.  **Environment Configuration:**
+    Create a `.env` file in the root directory and add your credentials:
+    ```env
+    MONGODB_URI=your_mongodb_uri
+    BETTER_AUTH_SECRET=your_secret_key
+    NEXT_PUBLIC_APP_URL=http://localhost:3000
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4.  **Run Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📜 Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+*   `npm run dev`: Runs the app in development mode.
+*   `npm run build`: Builds the application for production.
+*   `npm run start`: Starts the production server.
+*   `npm run lint`: Checks the code for linting errors.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
+````
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Developed with ❤️ by Kawser Ahmed**
