@@ -2,19 +2,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { toast } from "@heroui/react";
+import toast from "react-hot-toast";
 import Link from "next/link";
+
 
 const RegisterPage = () => {
   const router = useRouter();
 
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  //   confirmPassword: "",
-  //   image: "",
-  // });
 
   const [loading, setLoading] = useState(false);
 

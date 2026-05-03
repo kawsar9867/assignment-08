@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -18,6 +19,8 @@ const LoginPage = () => {
       password,
       callbackURL: "/",
     });
+
+    toast.success("Login Successfully! ")
     console.log({ data, error });
   };
 

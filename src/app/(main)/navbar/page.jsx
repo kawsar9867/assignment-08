@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Avatar, Button, Link } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await authClient.signOut();
+    toast.success("logout Successfully!");
   };
 
   return (
