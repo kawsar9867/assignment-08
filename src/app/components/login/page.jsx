@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const LoginPage = () => {
       password,
       callbackURL: "/",
     });
-    console.log({data, error})
+    console.log({ data, error });
   };
 
   return (
@@ -67,10 +68,9 @@ const LoginPage = () => {
         <p className="text-center text-sm mt-6 text-gray-600">
           Don’t have an account?{" "}
           <span
-            onClick={() => router.push("/register")}
             className="text-blue-600 font-medium cursor-pointer"
           >
-            Register
+            <Link href="/components/register">Register</Link>
           </span>
         </p>
       </div>

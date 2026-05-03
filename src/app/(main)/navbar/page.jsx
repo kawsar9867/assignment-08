@@ -65,7 +65,7 @@ const Navbar = () => {
               <li className="">
                 <Link
                   className="text-black no-underline hover:border-blue-700 border-1 border-blue-500 rounded-sm px-1  bg-blue-400 hover:text-white "
-                  href="/api/courses"
+                  href="/courses"
                 >
                   Courses
                 </Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
             {!user && (
               <ul className="flex items-center  text-sm gap-5">
                 <li>
-                  <Link href={"/login"}>SignUp</Link>
+                  <Link href={"/components/register"}>SignUp</Link>
                 </li>
                 <li>
                   <Link href={"/login"}>SignIn</Link>
@@ -108,7 +108,6 @@ const Navbar = () => {
                 </Button>
               </div>
             )}
-            
           </div>
         </header>
 

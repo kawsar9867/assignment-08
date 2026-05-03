@@ -1,15 +1,13 @@
 import React from "react";
 
 const Allinstractor = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   let instructors = [];
-
   try {
-    const res = await fetch(`${baseUrl}/api/instructors`, {
+    const res = await fetch(`http://localhost:3000/instractor.json`, {
       cache: "no-store",
     });
     const result = await res.json();
-    instructors = result.data || [];
+    instructors = result;
     console.log(result);
   } catch (error) {
     console.error("Error fetching instructors:", error);

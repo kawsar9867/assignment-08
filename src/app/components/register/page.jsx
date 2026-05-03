@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "@heroui/react";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -35,12 +36,10 @@ const RegisterPage = () => {
       },
       {
         onSuccess: (res) => {
-          //redirect to the dashboard or sign in page
           toast.success("Registration Successful!");
           router.push("/login");
         },
         onError: (res) => {
-          // display the error message
           alert(res.error.message);
         },
       },
@@ -112,7 +111,7 @@ const RegisterPage = () => {
             onClick={() => router.push("/login")}
             className="text-blue-600 cursor-pointer font-medium"
           >
-            Login
+            <Link href="/login">Login</Link>
           </span>
         </p>
       </div>
