@@ -20,8 +20,12 @@ const LoginPage = () => {
       callbackURL: "/",
     });
 
-    toast.success("Login Successfully! ")
-    console.log({ data, error });
+    if (error) {
+      toast.error(error.message || "Login failed! Please try again.");
+    } else {
+      toast.success("Login Successfully!");
+      router.push("/");
+    }
   };
 
   return (
@@ -70,9 +74,7 @@ const LoginPage = () => {
         {/* footer */}
         <p className="text-center text-sm mt-6 text-gray-600">
           Don’t have an account?{" "}
-          <span
-            className="text-blue-600 font-medium cursor-pointer"
-          >
+          <span className="text-blue-600 font-medium cursor-pointer">
             <Link href="/components/register">Register</Link>
           </span>
         </p>
