@@ -139,7 +139,7 @@ const AllCourses = () => {
                     {course.price ? `$${course.price}` : "Free"}
                   </span>
 
-                  <Link href={`/courses/${course._id}`}>
+                  <Link href={`/courses/${course.id}`}>
                     <button className="bg-slate-900 hover:bg-blue-600 text-white px-4 py-2.5 rounded-xl transition-all text-sm font-semibold active:scale-95 shadow-md">
                       Details
                     </button>

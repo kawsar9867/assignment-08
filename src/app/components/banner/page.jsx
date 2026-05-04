@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "motion/react";
 
 const BannerPage = () => {
   return (
@@ -14,9 +16,14 @@ const BannerPage = () => {
       />
 
       <div className="absolute inset-0 flex flex-col items-start justify-center  bg-black/20 animate__animated animate__backInRight">
-        <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-bold text-center ml-7 ">
+        <motion.h1
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold ml-2 mt-12 mb-8 text-white flex items-center gap-2"
+        >
           Upgrade Your Skills Today
-        </h1>
+        </motion.h1>
         <p className="text-white text-lg mt-1 ml-7">
           Learn from Industry Experts
         </p>
