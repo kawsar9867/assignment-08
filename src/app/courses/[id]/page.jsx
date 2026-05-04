@@ -5,40 +5,24 @@ const CourseDetails = async ({ params }) => {
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  let course = null;
-  let error = null;
+  const res = await fetch("https://assignment-08-rose.vercel.app/api.json");
+  const data = await res.json();
+  const course = data.find((f) => f.id === parseInt(id));
 
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-    const res = await fetch(`${baseUrl}/api/courses/${id}`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Course not found");
-    }
-
-    const result = await res.json();
-    course = result.data;
-  } catch (err) {
-    console.error("Fetch error:", err);
-    error = "কোর্সটির তথ্য লোড করা সম্ভব হচ্ছে না।";
-  }
-
-  if (error || !course) {
+  if (!course) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <h2 className="text-3xl font-bold text-slate-800">Oops! 😕</h2>
-        <p className="text-red-500 font-medium">
-          {error || "Course details not found."}
-        </p>
-        <Link
-          href="/courses"
-          className="bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-all"
-        >
-          Explore All Courses
-        </Link>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Course Not Found
+          </h1>
+          <Link
+            href="/course"
+            className="text-rose-600 hover:text-rose-700 font-medium"
+          >
+            ← Back to Books
+          </Link>
+        </div>
       </div>
     );
   }

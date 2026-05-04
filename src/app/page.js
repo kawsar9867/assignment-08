@@ -1,6 +1,5 @@
-import Image from "next/image";
+
 import BannerPage from "./components/banner/page";
-import AllCourses from "./components/AllCoureses";
 import PopularPage from "./components/popularCard/page";
 import Allinstractor from "./components/Allinstractor";
 import PriceingPage from "./components/priceing/page";
@@ -12,7 +11,7 @@ export default function Home() {
     <div>
       <BannerPage />
       <PopularPage />
-      <AllCourses />
+
       <PriceingPage />
       <LearningPage />
       <CommentPage />
