@@ -139,7 +139,7 @@ const Navbar = () => {
               <li className="">
                 <Link
                   className="text-black no-underline hover:border-blue-700 border-1 rounded-sm px-10  bg-blue-400 hover:text-white "
-                  href="/components/api"
+                  href="/courses"
                 >
                   Courses
                 </Link>
@@ -147,7 +147,7 @@ const Navbar = () => {
               <li className="">
                 <Link
                   className="text-black no-underline hover:border-blue-700 border-1 rounded-sm px-9  bg-blue-400 hover:text-white "
-                  href="/"
+                  href="/profile"
                 >
                   My Profile
                 </Link>

@@ -1,39 +1,28 @@
-"use client"; 
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
- 
+
   useEffect(() => {
     const fetchCourses = async () => {
-      try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-        const res = await fetch(`${baseUrl}/api/courses`, {
-          cache: "no-store",
-        });
+      const res = await fetch("http://localhost:3000/api.json", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      setLoading(false);
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch courses");
-        }
-
-        const result = await res.json();
-        setCourses(result.data || []);
-      } catch (err) {
-        console.error("Fetch error:", err);
-        setError("Course Loading Failed");
-      } finally {
-        setLoading(false);
-      }
+      setCourses(data);
     };
 
     fetchCourses();
   }, []);
- 
+
   const filteredCourses = courses.filter((course) => {
     const searchLower = searchTerm.toLowerCase();
     return (
@@ -44,7 +33,9 @@ const AllCourses = () => {
   });
 
   if (loading) {
-    return <div className="text-center py-20 font-bold">Loading Courses...</div>;
+    return (
+      <div className="text-center py-20 font-bold">Loading Courses...</div>
+    );
   }
 
   if (error) {
@@ -56,13 +47,12 @@ const AllCourses = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
-     
+    <div className="container mx-auto px-4 py-12 animate__animated animate__fadeInLeft">
       <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
-        <h1 className="text-4xl font-bold text-slate-800 flex items-center gap-2">
+        <h1 className="text-4xl font-bold text-slate-800 flex items-center gap-2 animate__animated animate__fadeInLeft">
           All Courses <span className="text-2xl">🔥</span>
         </h1>
-      
+
         <div className="relative w-full md:w-96">
           <input
             type="text"
@@ -72,21 +62,29 @@ const AllCourses = () => {
             className="w-full pl-5 pr-12 py-3 rounded-2xl border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all shadow-sm text-slate-700"
           />
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
             </svg>
           </div>
         </div>
       </div>
-    
-      {filteredCourses.length === 0 ? (
+
+      {filteredCourses.length === 0 ?
         <div className="text-center py-20">
-           <p className="text-gray-500 text-lg italic">
-            {searchTerm}
-           </p>
+          <p className="text-gray-500 text-lg italic">{searchTerm}</p>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredCourses.map((course) => (
             <div
               key={course._id}
@@ -105,9 +103,13 @@ const AllCourses = () => {
 
               <div className="p-5 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-2">
-                  <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${
-                    course.level === "Beginner" ? "border-green-200 text-green-600 bg-green-50" : "border-orange-200 text-orange-600 bg-orange-50"
-                  }`}>
+                  <span
+                    className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${
+                      course.level === "Beginner" ?
+                        "border-green-200 text-green-600 bg-green-50"
+                      : "border-orange-200 text-orange-600 bg-orange-50"
+                    }`}
+                  >
                     {course.level}
                   </span>
                   <span className="text-xs text-orange-500 font-bold">
@@ -120,11 +122,11 @@ const AllCourses = () => {
                 </h2>
 
                 <div className="flex items-center gap-2 mb-4">
-                   <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600">
                     👨‍🏫 {course.instructor}
                   </p>
                 </div>
-                
+
                 <p className="text-xs text-gray-500 mb-4 font-medium">
                   ⏱️ {course.duration}
                 </p>
@@ -144,7 +146,7 @@ const AllCourses = () => {
             </div>
           ))}
         </div>
-      )}
+      }
     </div>
   );
 };

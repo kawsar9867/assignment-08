@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 const PopularPage = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl = "http://localhost:3000";
 
-  let popularCourses = [];
+  let popularCourses = "";
 
   try {
-    const res = await fetch(`${baseUrl}/api/courses`, {
+    const res = await fetch(`${baseUrl}/api.json`, {
       cache: "no-store",
     });
 
@@ -16,11 +16,11 @@ const PopularPage = async () => {
     }
 
     const result = await res.json();
-    const allCourses = result.data || [];
-   
-    popularCourses = allCourses
-      .filter((course) => course.rating >= 4.7)
-      .sort((a, b) => b.rating - a.rating);
+    const allCourses = result;
+
+    const courses = allCourses.filter((c) => c.rating >= 4.7);
+
+    popularCourses = courses.slice(0, 4);
   } catch (error) {
     console.error("Error fetching popular courses:", error);
     return (
@@ -45,7 +45,7 @@ const PopularPage = async () => {
       : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
           {popularCourses.map((data) => (
             <div
-              key={data._id || data.id} 
+              key={data._id || data.id}
               className="group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
             >
               <div className="relative overflow-hidden">
@@ -59,7 +59,6 @@ const PopularPage = async () => {
                 </div>
               </div>
 
-           
               <div className="p-5 flex flex-col flex-grow">
                 <div className="flex items-center gap-2 mb-2">
                   <span
