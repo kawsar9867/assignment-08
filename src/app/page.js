@@ -11,13 +11,12 @@ export default function Home() {
   return (
     <div>
       <BannerPage />
-      {/* <PopularPage /> */}
-      {/* <AllCourses /> */}
-      {/* <PriceingPage/>
-      <LearningPage/>
-      <CommentPage/> */}
-      {/* <Allinstractor/> */}
-
+      <PopularPage />
+      <AllCourses />
+      <PriceingPage />
+      <LearningPage />
+      <CommentPage />
+      <Allinstractor />
     </div>
   );
 }

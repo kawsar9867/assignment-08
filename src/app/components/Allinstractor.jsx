@@ -2,16 +2,19 @@ import React from "react";
 
 const Allinstractor = async () => {
   let instructors = [];
-  // try {
-  //   const res = await fetch(`http://localhost:3000/instractor.json`, {
-  //     cache: "no-store",
-  //   });
-  //   const result = await res.json();
-  //   instructors = result;
-  //   console.log(result);
-  // } catch (error) {
-  //   console.error("Error fetching instructors:", error);
-  // }
+  try {
+    const res = await fetch(
+      `https://assignment-08-rose.vercel.app/instractor.json`,
+      {
+        cache: "no-store",
+      },
+    );
+    const result = await res.json();
+    instructors = result;
+    console.log(result);
+  } catch (error) {
+    console.error("Error fetching instructors:", error);
+  }
 
   return (
     <section className="py-16 bg-gray-50">

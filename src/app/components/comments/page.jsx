@@ -4,15 +4,16 @@ import React from "react";
 export const dynamic = "force-dynamic";
 
 const CommentPage = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://assignment-08-rose.vercel.app";
 
   let comments = [];
-  // try {
-  //   const res = await fetch(`${baseUrl}/comment.json`, { cache: "no-store" });
-  //   comments = await res.json();
-  // } catch (error) {
-  //   console.error("Error fetching comments:", error);
-  // }
+  try {
+    const res = await fetch(`${baseUrl}/comment.json`, { cache: "no-store" });
+    comments = await res.json();
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-[#F0F7FF] rounded-t-2xl">

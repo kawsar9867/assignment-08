@@ -2,33 +2,33 @@ import React from "react";
 import Link from "next/link";
 
 const PopularPage = async () => {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = "https://assignment-08-rose.vercel.app";
 
   let popularCourses = "";
 
-  // try {
-  //   const res = await fetch(`${baseUrl}/api.json`, {
-  //     cache: "no-store",
-  //   });
+  try {
+    const res = await fetch(`${baseUrl}/api.json`, {
+      cache: "no-store",
+    });
 
-  //   if (!res.ok) {
-  //     throw new Error("Failed to fetch data");
-  //   }
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-  //   const result = await res.json();
-  //   const allCourses = result;
+    const result = await res.json();
+    const allCourses = result;
 
-  //   const courses = allCourses.filter((c) => c.rating >= 4.7);
+    const courses = allCourses.filter((c) => c.rating >= 4.7);
 
-  //   popularCourses = courses.slice(0, 4);
-  // } catch (error) {
-  //   console.error("Error fetching popular courses:", error);
-  //   return (
-  //     <div className="text-center py-20 text-red-500 font-bold">
-  //       Error loading courses! Please try again later.
-  //     </div>
-  //   );
-  // }
+    popularCourses = courses.slice(0, 4);
+  } catch (error) {
+    console.error("Error fetching popular courses:", error);
+    return (
+      <div className="text-center py-20 text-red-500 font-bold">
+        Error loading courses! Please try again later.
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4">
