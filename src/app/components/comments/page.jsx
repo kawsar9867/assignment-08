@@ -29,10 +29,9 @@ const CommentPage = async () => {
             <div className="flex items-center gap-4 mb-4">
               <div className="relative w-14 h-14 shrink-0">
                 {/* Use Next.js Optimized Image */}
-                <Image
+                <img
                   src={comment.image}
                   alt={comment.name}
-                  fill
                   className="rounded-full object-cover"
                 />
               </div>

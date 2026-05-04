@@ -84,18 +84,29 @@ const Navbar = () => {
           </div>
           <div className="flex gap-2">
             {!user && (
-              <ul className="flex items-center  text-sm gap-5">
-                <li>
-                  <Link href={"/components/register"}>SignUp</Link>
-                </li>
-                <li>
-                  <Link href={"/login"}>SignIn</Link>
-                </li>
-              </ul>
+        <ul className="flex items-center text-sm gap-4 font-medium">
+  <li>
+    <Link 
+      href={"/components/register"} 
+      className="no-underline bg-gray-900 text-white px-3 py-1.5 rounded-full hover:bg-gray-800 transition-all duration-300 shadow-sm active:scale-95 inline-block text-center"
+    >
+      Sign up
+    </Link>
+  </li>
+  <li>
+    <Link 
+      href={"/login"} 
+      className="no-underline bg-gray-900 text-white px-3 py-1.5 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-sm active:scale-95 inline-block text-center"
+    >
+      Log in
+    </Link>
+  </li>
+</ul>
             )}
 
             {user && (
               <div className="flex gap-3">
+                <Link href="/profile">
                 <Avatar size="sm">
                   <Avatar.Image
                     alt="John Doe"
@@ -104,7 +115,7 @@ const Navbar = () => {
                   />
                   <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
-
+</Link>
                 <Button onClick={handleLogout} size="sm" variant="danger">
                   SignOut
                 </Button>

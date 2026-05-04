@@ -2,8 +2,10 @@
 import { useRef, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar } from "@heroui/react";
+import { useRouter } from "next/navigation"; 
 
 function ProfilePage() {
+  const router = useRouter(); 
   const { data: session, isPending } = authClient.useSession();
   const info = session?.user;
 
@@ -25,8 +27,18 @@ function ProfilePage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden relative">
         
+        <button 
+          onClick={() => router.back()} 
+          className="absolute top-4 left-4 z-10 bg-white/20 hover:bg-white/40 backdrop-blur-md p-2 rounded-full text-white transition-all border border-white/30"
+          title="Go Back"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
         <div className="h-28 bg-gradient-to-r from-blue-600 to-indigo-600"></div>
 
         <div className="px-8 pb-8">

@@ -7,10 +7,12 @@ import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  // login submit
+  // Email Login
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -21,23 +23,31 @@ const LoginPage = () => {
     });
 
     if (error) {
-      toast.error(error.message || "Login failed! Please try again.");
+      toast.error(error.message || "Login failed!");
     } else {
       toast.success("Login Successfully!");
       router.push("/");
     }
+    setLoading(false);
+  };
+
+  // Google Login Function
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/", 
+    });
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
       <div className="w-full max-w-[500px] bg-white shadow-xl rounded-2xl p-8">
-        {/* Header */}
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
           <p className="text-gray-500">Login to your account</p>
         </div>
 
-        {/* Form */}
+        {/* Email Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="email"
@@ -55,28 +65,48 @@ const LoginPage = () => {
             required
           />
 
-          {/* forgot */}
           <div className="text-right">
             <span className="text-sm text-blue-600 cursor-pointer hover:underline">
               Forgot password?
             </span>
           </div>
 
-          {/* button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-blue-400"
           >
-            login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        {/* footer */}
+        {/* Divider */}
+        <div className="relative flex py-5 items-center">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="flex-shrink mx-4 text-gray-400 text-sm">OR</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+
+       
+        <button
+          onClick={handleGoogleLogin}
+          type="button"
+          className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 transition"
+        >
+          <img 
+            src="https://www.vectorlogo.zone/logos/google/google-icon.svg" 
+            alt="Google" 
+            className="w-5 h-5"
+          />
+          Continue with Google
+        </button>
+
+        {/* Footer */}
         <p className="text-center text-sm mt-6 text-gray-600">
           Don’t have an account?{" "}
-          <span className="text-blue-600 font-medium cursor-pointer">
-            <Link href="/components/register">Register</Link>
-          </span>
+          <Link href="/components/register" className="text-blue-600 font-medium hover:underline">
+            Register
+          </Link>
         </p>
       </div>
     </div>
