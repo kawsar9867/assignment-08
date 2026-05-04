@@ -9,19 +9,19 @@ const AllCourses = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCourses = async () => {
-      const res = await fetch("http://localhost:3000/api.json", {
-        cache: "no-store",
-      });
-      const data = await res.json();
-      setLoading(false);
+  // useEffect(() => {
+  //   const fetchCourses = async () => {
+  //     const res = await fetch("http://localhost:3000/api.json", {
+  //       cache: "no-store",
+  //     });
+  //     const data = await res.json();
+  //     setLoading(false);
 
-      setCourses(data);
-    };
+  //     setCourses(data);
+  //   };
 
-    fetchCourses();
-  }, []);
+  //   fetchCourses();
+  // }, []);
 
   const filteredCourses = courses.filter((course) => {
     const searchLower = searchTerm.toLowerCase();
