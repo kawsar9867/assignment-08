@@ -1,15 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
+
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  // Email Login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -19,7 +19,6 @@ const LoginPage = () => {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/",
     });
 
     if (error) {
@@ -35,7 +34,6 @@ const LoginPage = () => {
   const handleGoogleLogin = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/", 
     });
   };
 
@@ -87,15 +85,15 @@ const LoginPage = () => {
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
 
-       
         <button
           onClick={handleGoogleLogin}
           type="button"
           className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 transition"
         >
-          <img 
-            src="https://www.vectorlogo.zone/logos/google/google-icon.svg" 
-            alt="Google" 
+          <img
+            onClick={handleGoogleLogin}
+            src="https://www.vectorlogo.zone/logos/google/google-icon.svg"
+            alt="Google"
             className="w-5 h-5"
           />
           Continue with Google
@@ -104,7 +102,10 @@ const LoginPage = () => {
         {/* Footer */}
         <p className="text-center text-sm mt-6 text-gray-600">
           Don’t have an account?{" "}
-          <Link href="/components/register" className="text-blue-600 font-medium hover:underline">
+          <Link
+            href="/components/register"
+            className="text-blue-600 font-medium hover:underline"
+          >
             Register
           </Link>
         </p>
